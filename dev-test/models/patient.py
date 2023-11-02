@@ -17,6 +17,10 @@ class HospitalPatient(models.Model):
 
     # Field for the patient's name, a required field (Char means character/string)
     name = fields.Char(string="Name", required=True, tracking=True)
+    
+    # Computed Field for Capitalized Name. The Computed Field is an function trigger.
+    # Like: <button onclick="onclick()"/>
+    capitalized_name = fields.Char(string="Capitalized Name", tracking=True, readonly=True, computed="_compute_capitalized_name")
 
     # Field for the patient's birthdate (Date Type)
     birthday_date = fields.Date(string="Birthday Date", tracking=True)
@@ -36,6 +40,16 @@ class HospitalPatient(models.Model):
         selection=[('male', 'Male'), ('woman', 'Woman'), ('others', 'Others')],
         tracking=True
     )
+    
+    @api.depends('name')
+    def _compute_capitalized_name(self):
+        # Self need to be iterated
+        # Because will contain every records
+        for record in self:
+            if record.name:
+                record.capitalized_name = record.name.upper()
+            else:
+                record.capitalized_name = ''
     
     @api.onchange('age')
     def _onchange_age(self):
