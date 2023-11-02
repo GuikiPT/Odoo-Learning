@@ -5,6 +5,9 @@ from odoo import api, fields, models
 class HospitalPatient(models.Model):
     # Specify the technical name of the model, which will be used as the database table name
     _name = "hospital.patient" # The Odoo will replace "." by "_" in database and will be "hospital.patient" to "hospital_patient"
+    
+    # Inherit mail_thread fields for "Chatter" funcionality (For Tracking Changes)
+    _inherit = ['mail.thread']
 
     # Provide a description for the model, which will be displayed in Odoo's "Settings / Technical / Database Structure / Models"
     _description = "Patient Records"
