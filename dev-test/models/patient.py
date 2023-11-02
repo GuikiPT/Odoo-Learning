@@ -1,5 +1,5 @@
 # Import necessary modules from Odoo
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 
 # Define a custom Odoo model named "HospitalPatient"
@@ -45,7 +45,7 @@ class HospitalPatient(models.Model):
     @api.constrains('notes')
     def _check_null_notes(self):
         if self.notes == '':
-            raise ValidationError('Notes are required field. So Please take you\'re notes !')
+            raise ValidationError(_('Notes are required field. So Please take you\'re notes !'))
     
     
     @api.depends('name')
