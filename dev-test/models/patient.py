@@ -16,23 +16,23 @@ class HospitalPatient(models.Model):
     # Each field represents a piece of information about a patient
 
     # Field for the patient's name, a required field (Char means character/string)
-    name = fields.Char(string="Name", required=True, Tracking=True)
+    name = fields.Char(string="Name", required=True, tracking=True)
 
     # Field for the patient's birthdate (Date Type)
-    birthday_date = fields.Date(string="Birthday Date", Tracking=True)
+    birthday_date = fields.Date(string="Birthday Date", tracking=True)
 
     # Field for the patient's age (Integer type)
-    age = fields.Integer(string="Age", Tracking=True)
+    age = fields.Integer(string="Age", tracking=True)
 
     # Field to indicate whether the patient is a child or not (Boolean type)
-    is_child = fields.Boolean(string="Is Child?", Tracking=True)
+    is_child = fields.Boolean(string="Is Child?", tracking=True)
 
     # Field for adding textual notes or comments about the patient (Text type)
-    notes = fields.Text(string="Notes", Tracking=True)
+    notes = fields.Text(string="Notes", tracking=True)
 
     # Field for specifying the patient's gender, with a predefined selection of values
     gender = fields.Selection(
         string="Gender",
         selection=[('male', 'Male'), ('woman', 'Woman'), ('others', 'Others')],
-        Tracking=True
+        tracking=True
     )
