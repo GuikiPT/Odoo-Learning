@@ -47,7 +47,6 @@ class HospitalPatient(models.Model):
         if self.notes == '':
             raise ValidationError(_('Notes are required field. So Please take you\'re notes !'))
     
-    
     @api.depends('name')
     def _compute_capitalized_name(self):
         # Self need to be iterated
