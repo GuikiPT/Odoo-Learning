@@ -1,5 +1,6 @@
 # Import necessary modules from Odoo
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 # Define a custom Odoo model named "HospitalPatient"
 class HospitalPatient(models.Model):
@@ -40,6 +41,12 @@ class HospitalPatient(models.Model):
         selection=[('male', 'Male'), ('woman', 'Woman'), ('others', 'Others')],
         tracking=True
     )
+    
+    @api.constrains('notes')
+    def _check_null_notes(self):
+        if self.notes == '':
+            raise ValidationError('Notes are required field. So Please take you\'re notes !')
+    
     
     @api.depends('name')
     def _compute_capitalized_name(self):
