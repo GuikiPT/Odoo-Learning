@@ -43,3 +43,14 @@ class HospitalPatient(models.Model):
             self.is_child = True
         else:
             self.is_child = False
+            
+    @api.onchange('birthday_date')
+    def _onchange_birthday_date(self):  
+        # Calculate age based on 'birthday_date'
+        if self.birthday_date:
+            # Calculate age based on the difference between the birthdate and the current date
+            today = fields.Date.today()
+            age = today.year - self.birthday_date.year - ((today.month, today.day) < (self.birthday_date.month, self.birthday_date.day))
+
+            # Update the 'age' field with the calculated age
+            self.age = age
