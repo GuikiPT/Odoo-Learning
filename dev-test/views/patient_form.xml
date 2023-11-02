@@ -13,6 +13,7 @@
                         <field name="is_child"></field>
                         <field name="notes"></field>
                         <field name="gender"></field>
+                        <field name="capitalized_name"></field>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -34,6 +35,7 @@
                 <field name="is_child"></field>
                 <field name="notes"></field>
                 <field name="gender"></field>
+                <field name="capitalized_name"></field>
             </form>
         </field>
     </record>
