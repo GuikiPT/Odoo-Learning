@@ -22,10 +22,10 @@ class HospitalPatient(models.Model):
     birthday_date = fields.Date(string="Birthday Date", tracking=True)
 
     # Field for the patient's age (Integer type)
-    age = fields.Integer(string="Age", tracking=True)
+    age = fields.Integer(string="Age", tracking=True, readonly=True)
 
     # Field to indicate whether the patient is a child or not (Boolean type)
-    is_child = fields.Boolean(string="Is Child?", tracking=True)
+    is_child = fields.Boolean(string="Is Child?", tracking=True, readonly=True)
 
     # Field for adding textual notes or comments about the patient (Text type)
     notes = fields.Text(string="Notes", tracking=True)
