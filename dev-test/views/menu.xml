@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Settings / Technical / User Interface / Menu Items -->
+
+    <menuitem id="menu_hospital_root"
+        name="Hospital"
+        sequence="10" />
+
+    <menuitem id="menu_hospital_operations"
+        name="Operations"
+        parent="menu_hospital_root"
+        sequence="10" />
+
+    <menuitem id="menu_hospital_patients"
+        name="Patients"
+        parent="menu_hospital_operations"
+        action="action_hospital_patient"
+        sequence="10" />
+
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

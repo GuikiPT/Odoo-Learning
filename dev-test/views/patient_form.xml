@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"></field>
+                        <field name="birthday_date"></field>
+                        <field name="age"></field>
+                        <field name="is_child"></field>
+                        <field name="notes"></field>
+                        <field name="gender"></field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="name"></field>
+                <field name="birthday_date"></field>
+                <field name="age"></field>
+                <field name="is_child"></field>
+                <field name="notes"></field>
+                <field name="gender"></field>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>
