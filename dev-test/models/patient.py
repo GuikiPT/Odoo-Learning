@@ -36,3 +36,10 @@ class HospitalPatient(models.Model):
         selection=[('male', 'Male'), ('woman', 'Woman'), ('others', 'Others')],
         tracking=True
     )
+    
+    @api.onchange('age')
+    def _onchange_age(self):
+        if self.age <= 10:
+            self.is_child = True
+        else:
+            self.is_child = False
