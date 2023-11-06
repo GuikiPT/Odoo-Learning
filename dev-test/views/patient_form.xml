@@ -6,6 +6,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"></field>
+                        </h1>
+                    </div>
                     <group>
                         <field name="name"></field>
                         <field name="capitalized_name"></field>
@@ -29,6 +34,7 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
+                <field name="ref"></field>
                 <field name="name"></field>
                 <field name="birthday_date"></field>
                 <field name="age"></field>

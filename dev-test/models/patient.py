@@ -42,12 +42,12 @@ class HospitalPatient(models.Model):
         selection=[('male', 'Male'), ('woman', 'Woman'), ('others', 'Others')],
         tracking=True
     )
+    ref = fields.Char(string="Reference", default=lambda self: _('New'))
     
     @api.model_create_multi
     def create(self, values): # Use the @api.model_create_multi decorator to indicate this is a replacement for the create method when creating multiple records.
         for value in values: # Iterate through the list of dictionaries containing data for each record being created.
-            value['gender'] = 'woman' # Set the "gender" field in each record to 'woman'. This ensures that the "gender" field is explicitly set to 'woman' for all created records.
-        
+            value['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient')
         return super(HospitalPatient, self).create(values) # Call the original create method of the model to perform the standard create operation, but with the modification made to the "gender" field.
     
     @api.constrains('notes')
