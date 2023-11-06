@@ -1,6 +1,7 @@
 # Import necessary modules from Odoo
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+import logging
 
 # Define a custom Odoo model named "HospitalPatient"
 class HospitalPatient(models.Model):
@@ -41,6 +42,13 @@ class HospitalPatient(models.Model):
         selection=[('male', 'Male'), ('woman', 'Woman'), ('others', 'Others')],
         tracking=True
     )
+    
+    @api.model_create_multi
+    def create(self, values): # Use the @api.model_create_multi decorator to indicate this is a replacement for the create method when creating multiple records.
+        for value in values: # Iterate through the list of dictionaries containing data for each record being created.
+            value['gender'] = 'woman' # Set the "gender" field in each record to 'woman'. This ensures that the "gender" field is explicitly set to 'woman' for all created records.
+        
+        return super(HospitalPatient, self).create(values) # Call the original create method of the model to perform the standard create operation, but with the modification made to the "gender" field.
     
     @api.constrains('notes')
     def _check_null_notes(self):
